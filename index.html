@@ -1,0 +1,195 @@
+<!-- =========================
+FILE: index.html
+MEMOTIX – RECEIPT PHOTOBOOTH
+========================= -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+  <title>MEMOTIX – RECEIPT PHOTOBOOTH</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- QRCode -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+  <!-- html2canvas -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<!-- =========================
+APP
+========================= -->
+<div class="app">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="logo">
+      MEMOTIX
+      <span>Receipt Photobooth</span>
+    </div>
+
+    <button class="settingsBtn" id="settingsBtn">
+      ⚙
+    </button>
+  </div>
+
+  <!-- CAMERA -->
+  <div class="cameraWrapper">
+
+    <video id="video" autoplay playsinline></video>
+
+    <div class="cameraOverlay"></div>
+
+    <div class="floating floating1">★</div>
+    <div class="floating floating2">♥</div>
+    <div class="floating floating3">✿</div>
+
+    <!-- FRAME -->
+    <div class="receiptFrame" id="receiptFrame">
+
+      <div class="frameHeader">
+        <h2 id="brandTitle">MEMOTIX</h2>
+        <p>receipt photobooth</p>
+      </div>
+
+      <div class="photoGrid" id="photoGrid">
+
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
+
+      </div>
+
+      <div class="receiptFooter">
+        <p id="footerText">warm memories forever ♡</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="controls">
+
+    <div class="counter" id="counter">
+      READY
+    </div>
+
+    <button class="captureBtn" id="captureBtn">
+      START
+    </button>
+
+    <button class="finishBtn" id="finishBtn">
+      FINISH
+    </button>
+
+  </div>
+
+</div>
+
+<!-- =========================
+RESULT MODAL
+========================= -->
+<div class="modal hidden" id="resultModal">
+
+  <div class="modalContent">
+
+    <button class="closeBtn" id="closeResult">
+      ✕
+    </button>
+
+    <h2>Your Photo Is Ready ✨</h2>
+
+    <div class="previewArea">
+      <img id="finalImage"/>
+    </div>
+
+    <div class="qrSection">
+      <canvas id="qrCanvas"></canvas>
+
+      <p>
+        Scan QR to download
+      </p>
+    </div>
+
+    <a id="downloadBtn" download="memotix-photo.png">
+      DOWNLOAD
+    </a>
+
+  </div>
+
+</div>
+
+<!-- =========================
+SETTINGS PANEL
+========================= -->
+<div class="settingsPanel hidden" id="settingsPanel">
+
+  <div class="settingsContent">
+
+    <div class="settingsHeader">
+      <h2>ADMIN PANEL</h2>
+
+      <button id="closeSettings">
+        ✕
+      </button>
+    </div>
+
+    <div class="settingGroup">
+
+      <label>Brand Name</label>
+      <input type="text" id="brandInput" value="MEMOTIX">
+
+    </div>
+
+    <div class="settingGroup">
+
+      <label>Footer Text</label>
+      <input type="text"
+             id="footerInput"
+             value="warm memories forever ♡">
+
+    </div>
+
+    <div class="settingGroup">
+
+      <label>Choose Frame Style</label>
+
+      <select id="frameSelect">
+        <option value="classic">Classic Receipt</option>
+        <option value="retro">Retro Peach</option>
+        <option value="cute">Cute Cream</option>
+      </select>
+
+    </div>
+
+    <div class="settingGroup">
+
+      <label>Sticker Mode</label>
+
+      <select id="stickerToggle">
+        <option value="on">ON</option>
+        <option value="off">OFF</option>
+      </select>
+
+    </div>
+
+    <button class="saveBtn" id="saveSettings">
+      SAVE SETTINGS
+    </button>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

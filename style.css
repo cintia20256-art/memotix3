@@ -1,0 +1,412 @@
+/* =========================
+FILE: style.css
+========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  user-select:none;
+  -webkit-user-select:none;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  touch-action:manipulation;
+  font-family:'Fredoka',sans-serif;
+  background:#ffcf8f;
+}
+
+body{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.grain{
+  position:fixed;
+  inset:0;
+  opacity:.08;
+  background-image:url("https://grainy-gradients.vercel.app/noise.svg");
+  pointer-events:none;
+}
+
+.app{
+  width:100%;
+  max-width:500px;
+  height:100vh;
+  background:
+  linear-gradient(
+    180deg,
+    #ffd6a5,
+    #ffc48d,
+    #ffb4a2
+  );
+  position:relative;
+  overflow:hidden;
+}
+
+.topbar{
+  height:80px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px;
+}
+
+.logo{
+  color:#8b3d2e;
+  font-size:28px;
+  font-weight:600;
+}
+
+.logo span{
+  display:block;
+  font-size:12px;
+  opacity:.7;
+}
+
+.settingsBtn{
+  width:50px;
+  height:50px;
+  border:none;
+  border-radius:50%;
+  background:#fff6;
+  backdrop-filter:blur(10px);
+  font-size:24px;
+  cursor:pointer;
+}
+
+.cameraWrapper{
+  position:relative;
+  width:100%;
+  height:calc(100vh - 200px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:
+    brightness(.9)
+    saturate(1.1);
+}
+
+.cameraOverlay{
+  position:absolute;
+  inset:0;
+  background:
+  linear-gradient(
+    to bottom,
+    rgba(0,0,0,.2),
+    transparent,
+    rgba(0,0,0,.2)
+  );
+}
+
+.receiptFrame{
+  width:280px;
+  min-height:540px;
+  background:#fff8ef;
+  z-index:10;
+  border-radius:30px;
+  padding:18px;
+  box-shadow:
+  0 20px 40px rgba(0,0,0,.25);
+  position:relative;
+  overflow:hidden;
+}
+
+.receiptFrame::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:10px;
+  background:
+  repeating-linear-gradient(
+    90deg,
+    transparent 0 8px,
+    #ffb4a2 8px 16px
+  );
+}
+
+.frameHeader{
+  text-align:center;
+  margin-bottom:14px;
+}
+
+.frameHeader h2{
+  color:#ff6b4a;
+  font-size:28px;
+}
+
+.frameHeader p{
+  font-size:12px;
+  color:#888;
+}
+
+.photoGrid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+}
+
+.slot{
+  width:100%;
+  height:105px;
+  border-radius:18px;
+  background:#ffe7d1;
+  overflow:hidden;
+  position:relative;
+}
+
+.slot img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.receiptFooter{
+  margin-top:15px;
+  text-align:center;
+  color:#999;
+  font-size:13px;
+}
+
+.controls{
+  height:120px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+}
+
+.counter{
+  color:white;
+  font-size:22px;
+  font-weight:600;
+  text-shadow:0 3px 8px rgba(0,0,0,.3);
+}
+
+.captureBtn,
+.finishBtn{
+  border:none;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.captureBtn{
+  width:120px;
+  height:55px;
+  border-radius:50px;
+  background:#ff7043;
+  color:white;
+  font-size:18px;
+  font-weight:600;
+  box-shadow:
+  0 10px 20px rgba(255,112,67,.4);
+}
+
+.finishBtn{
+  width:180px;
+  height:45px;
+  border-radius:30px;
+  background:#fff7;
+  backdrop-filter:blur(10px);
+  color:#7b3c2c;
+  font-size:16px;
+}
+
+.captureBtn:active,
+.finishBtn:active{
+  transform:scale(.96);
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+.modalContent{
+  width:90%;
+  max-width:380px;
+  background:#fff7ef;
+  border-radius:30px;
+  padding:20px;
+  position:relative;
+  text-align:center;
+}
+
+.closeBtn{
+  position:absolute;
+  top:15px;
+  right:15px;
+  width:40px;
+  height:40px;
+  border:none;
+  border-radius:50%;
+  background:#ffe2d6;
+  font-size:18px;
+  cursor:pointer;
+}
+
+.previewArea{
+  margin-top:20px;
+}
+
+.previewArea img{
+  width:100%;
+  border-radius:20px;
+}
+
+.qrSection{
+  margin-top:20px;
+}
+
+#downloadBtn{
+  margin-top:20px;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+  height:50px;
+  border-radius:20px;
+  background:#ff7043;
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.hidden{
+  display:none !important;
+}
+
+.settingsPanel{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  z-index:9999;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.settingsContent{
+  width:90%;
+  max-width:420px;
+  background:#fff7ef;
+  border-radius:30px;
+  padding:24px;
+}
+
+.settingsHeader{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.settingsHeader button{
+  width:42px;
+  height:42px;
+  border:none;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+.settingGroup{
+  margin-bottom:18px;
+}
+
+.settingGroup label{
+  display:block;
+  margin-bottom:8px;
+  color:#7b3c2c;
+}
+
+.settingGroup input,
+.settingGroup select{
+  width:100%;
+  height:50px;
+  border:none;
+  border-radius:16px;
+  padding:0 15px;
+  background:#ffe7d1;
+  font-size:15px;
+}
+
+.saveBtn{
+  width:100%;
+  height:55px;
+  border:none;
+  border-radius:18px;
+  background:#ff7043;
+  color:white;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.floating{
+  position:absolute;
+  z-index:20;
+  font-size:30px;
+  animation:float 4s infinite ease-in-out;
+}
+
+.floating1{
+  top:90px;
+  left:40px;
+}
+
+.floating2{
+  right:40px;
+  top:160px;
+}
+
+.floating3{
+  bottom:130px;
+  left:30px;
+}
+
+@keyframes float{
+  0%{
+    transform:translateY(0px);
+  }
+  50%{
+    transform:translateY(-15px);
+  }
+  100%{
+    transform:translateY(0px);
+  }
+}
+
+.retro{
+  background:#ffe0c7;
+}
+
+.cute{
+  background:#fff3d6;
+}
+
+.classic{
+  background:#fff8ef;
+}
